@@ -69,7 +69,7 @@ init = {
         , { id = 26, name = "zelda",     path = "zelda.png" }
         , { id = 27, name = "epona",     path = "epona.png" }
         ]
-    ,   spheres = [ {number = 0, items = [] } ]
+    ,   spheres = [ { number = 0, items = [] } ]
     }
 
 -- UPDATE
@@ -81,26 +81,6 @@ update action model =
     model
 
 -- VIEW
-
-titleStyle : List (Attribute msg)
-titleStyle =
-    [ style "color" "ff461f" ]
-
-renderSphere : Sphere -> Html Msg
-renderSphere sphere =
-    div []
-    [ h3  [] [ text ("Sphere " ++ (String.fromInt sphere.number)) ]
-    , div [] (List.map (renderItem) sphere.items )
-    ]
-    
-
-renderItem : Item -> Html Msg
-renderItem item =
-    div [ style "flex-grow" "1"
-        , style "flex-basis" "25%"
-        ] 
-        [ text( item.name ) ]
-
 
 view : Model -> Html Msg
 view model =
@@ -121,3 +101,21 @@ view model =
         ]
     ]
     
+titleStyle : List (Attribute msg)
+titleStyle =
+    [ style "color" "ff461f" ]
+
+renderSphere : Sphere -> Html Msg
+renderSphere sphere =
+    div []
+    [ h3  [] [ text ("Sphere " ++ (String.fromInt sphere.number)) ]
+    , div [] (List.map (renderItem) sphere.items )
+    ]
+    
+
+renderItem : Item -> Html Msg
+renderItem item =
+    div [ style "flex-grow" "1"
+        , style "flex-basis" "25%"
+        ] 
+        [ text( item.name ) ]
